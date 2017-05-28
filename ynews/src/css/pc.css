@@ -12,3 +12,8 @@
     font-size: 24px;
     padding-left: 5px;
 }
+
+/* TODO: a common style in pc and mobile, will be extracted later */
+.footer {
+    text-align: center;
+}

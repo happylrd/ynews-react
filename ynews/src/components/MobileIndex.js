@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import MobileHeader from './MobileHeader';
+import MobileFooter from './MobileFooter';
 
 export default class MobileIndex extends Component {
 
@@ -8,6 +9,7 @@ export default class MobileIndex extends Component {
         return (
             <div>
                 <MobileHeader/>
+                <MobileFooter/>
             </div>
         );
     }
