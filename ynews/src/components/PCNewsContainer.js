@@ -7,6 +7,7 @@ import {
 } from 'antd';
 
 import PCNewsBlock from './PCNewsBlock';
+import PCNewsImageBlock from './PCNewsImageBlock';
 
 const TabPane = Tabs.TabPane;
 
@@ -27,16 +28,22 @@ export default class PCNewsContainer extends Component {
                                 <div><img src={require('../images/carousel_4.jpg')} alt="轮播图4"/></div>
                             </Carousel>
                         </div>
+                        <PCNewsImageBlock count={6} type="yule" width="400px" cardTitle="娱乐头条" imageWidth="100px"/>
                     </div>
 
                     <Tabs className="tabs-news">
-                        <TabPane tab="头条新闻" key="1">
+                        <TabPane tab="头条" key="1">
                             <PCNewsBlock count={20} type="top" width="100%"/>
                         </TabPane>
-                        <TabPane tab="国际" key="2">
-                            <PCNewsBlock count={20} type="guoji" width="100%"/>
+                        <TabPane tab="社会" key="2">
+                            <PCNewsBlock count={20} type="shehui" width="100%"/>
                         </TabPane>
                     </Tabs>
+
+                    <div>
+                        <PCNewsImageBlock count={8} type="guonei" width="100%" cardTitle="国内头条" imageWidth="120px"/>
+                        <PCNewsImageBlock count={16} type="keji" width="100%" cardTitle="科技头条" imageWidth="120px"/>
+                    </div>
                 </Col>
                 <Col span={2}></Col>
             </Row>

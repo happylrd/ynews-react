@@ -17,9 +17,6 @@ export default class PCNewsBlock extends Component {
             method: 'GET'
         };
 
-        console.log('type: ' + this.props.type);
-        console.log('count: ' + this.props.count);
-
         fetch('http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=' + this.props.type +
             "&count=" + this.props.count, myFetchOptions)
             .then(response => response.json())
