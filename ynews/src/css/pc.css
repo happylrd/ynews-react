@@ -18,7 +18,20 @@
     text-align: center;
 }
 
-/* TODO: it doesn't work, will be improved later */
 .register {
-    float: right;
+    float: right !important;
+}
+
+.container {
+    padding-top: 10px;
+}
+
+.left-container {
+    width: 400px;
+    float: left;
+}
+
+.carousel {
+    width: 400px;
+    float: left;
 }

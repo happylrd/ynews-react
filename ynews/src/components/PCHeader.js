@@ -99,7 +99,7 @@ class PCHeader extends Component {
 
         const userShowItem = this.state.hasLogin
             ?
-            <Menu.Item key="logout" class="register">
+            <Menu.Item key="logout" className="register">
                 <Button type="primary">{this.state.userNickName}</Button>
                 &nbsp;&nbsp;
                 {/*<Link target="_blank">*/}
@@ -109,7 +109,7 @@ class PCHeader extends Component {
                 <Button onClick={this.logout.bind(this)}>退出</Button>
             </Menu.Item>
             :
-            <Menu.Item key="register" class="register">
+            <Menu.Item key="register" className="register">
                 <Icon type="appstore"/>注册/登录
             </Menu.Item>;
 
