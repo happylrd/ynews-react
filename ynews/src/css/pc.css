@@ -17,3 +17,8 @@
 .footer {
     text-align: center;
 }
+
+/* TODO: it doesn't work, will be improved later */
+.register {
+    float: right;
+}
