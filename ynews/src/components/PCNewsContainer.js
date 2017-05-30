@@ -2,8 +2,13 @@ import React, {Component} from 'react';
 import {
     Row,
     Col,
-    Carousel
+    Carousel,
+    Tabs
 } from 'antd';
+
+import PCNewsBlock from './PCNewsBlock';
+
+const TabPane = Tabs.TabPane;
 
 export default class PCNewsContainer extends Component {
 
@@ -16,17 +21,22 @@ export default class PCNewsContainer extends Component {
                         <div className="carousel">
                             <Carousel autoplay>
                                 {/* TODO: will be improved later */}
-                                <div><img src={require('../images/carousel_1.jpg')} alt="轮播图1" width="400"
-                                          height="400"/></div>
-                                <div><img src={require('../images/carousel_2.jpg')} alt="轮播图2" width="400"
-                                          height="400"/></div>
-                                <div><img src={require('../images/carousel_3.jpg')} alt="轮播图3" width="400"
-                                          height="400"/></div>
-                                <div><img src={require('../images/carousel_4.jpg')} alt="轮播图4" width="400"
-                                          height="400"/></div>
+                                <div><img src={require('../images/carousel_1.jpg')} alt="轮播图1"/></div>
+                                <div><img src={require('../images/carousel_2.jpg')} alt="轮播图2"/></div>
+                                <div><img src={require('../images/carousel_3.jpg')} alt="轮播图3"/></div>
+                                <div><img src={require('../images/carousel_4.jpg')} alt="轮播图4"/></div>
                             </Carousel>
                         </div>
                     </div>
+
+                    <Tabs className="tabs-news">
+                        <TabPane tab="头条新闻" key="1">
+                            <PCNewsBlock count={20} type="top" width="100%"/>
+                        </TabPane>
+                        <TabPane tab="国际" key="2">
+                            <PCNewsBlock count={20} type="guoji" width="100%"/>
+                        </TabPane>
+                    </Tabs>
                 </Col>
                 <Col span={2}></Col>
             </Row>
