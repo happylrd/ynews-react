@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'antd';
 import {
+    Row,
+    Col,
     Menu,
     Icon,
     Modal,
     Tabs,
     Form,
     Input,
-    Button
+    Button,
+    message
 } from 'antd';
 
 import logo from '../images/ic_logo.png';
@@ -43,7 +45,24 @@ class PCHeader extends Component {
     }
 
     handleSubmit(elem) {
+        elem.preventDefault();
 
+        const formData = this.props.form.getFieldsValue();
+        console.log(formData);
+
+        const myFetchOptions = {
+            method: 'GET'
+        };
+        fetch('http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName=' +
+            formData.r_username + '&r_password=' + formData.r_password + '&r_confirmPassword=' +
+            formData.r_confirmPassword, myFetchOptions)
+            .then(response => response.json())
+            .then(json => {
+                this.setState({userNickName: json.NickUserName, userId: json.UserId});
+                message.success("请求成功！");
+            });
+
+        this.setModalVisible(false);
     }
 
     render() {
@@ -131,14 +150,27 @@ class PCHeader extends Component {
                         <TabPane tab="注册" key="2">
                             <Form onSubmit={this.handleSubmit.bind(this)}>
                                 <FormItem label="账户">
-                                    <Input placeholder="请输入您的账号" {...getFieldDecorator('r_username')} />
+                                    {getFieldDecorator('r_username', {
+                                        rules: [{required: true, message: '请输入您的用户名'}],
+                                    })(
+                                        <Input prefix={<Icon type="user" style={{fontSize: 13}}/>} placeholder="用户名"/>
+                                    )}
                                 </FormItem>
                                 <FormItem label="密码">
-                                    <Input type="password" placeholder="请输入您的密码" {...getFieldDecorator('r_password')} />
+                                    {getFieldDecorator('r_password', {
+                                        rules: [{required: true, message: '请输入您的密码'}],
+                                    })(
+                                        <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>} type="password"
+                                               placeholder="密码"/>
+                                    )}
                                 </FormItem>
                                 <FormItem label="确认密码">
-                                    <Input type="password"
-                                           placeholder="请再次输入您的密码" {...getFieldDecorator('r_confirmPassword')} />
+                                    {getFieldDecorator('r_confirmPassword', {
+                                        rules: [{required: true, message: '请确认您的密码'}],
+                                    })(
+                                        <Input prefix={<Icon type="lock" style={{fontSize: 13}}/>} type="password"
+                                               placeholder="确认密码"/>
+                                    )}
                                 </FormItem>
                                 <Button type="primary" htmlType="submit">注册</Button>
                             </Form>
